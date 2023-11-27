@@ -1,0 +1,19 @@
+{
+    "name": "TateyomiNiNaru",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "description": "本文を縦読みにする拡張機能です。",
+    "permissions": [
+        "scripting"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://ncode.syosetu.com/*/*/"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
