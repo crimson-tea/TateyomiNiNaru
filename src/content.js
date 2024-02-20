@@ -8,7 +8,7 @@ function handleScroll() {
     let from = 0;
     let targetLeft = 0;
 
-    scrollTarget.addEventListener("wheel", (e) => {
+    window.addEventListener("wheel", (e) => {
         e.preventDefault();
         if (e.deltaY === 0) return;
         if (interval) clearInterval(interval);
