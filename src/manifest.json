@@ -9,10 +9,22 @@
     "content_scripts": [
         {
             "matches": [
+                "https://ncode.syosetu.com/*",
+                "https://ncode.syosetu.com/*/?p*"
+            ],
+            "js": [
+                "index-content.js"
+            ]
+        },
+        {
+            "matches": [
                 "https://ncode.syosetu.com/*/*/"
             ],
             "js": [
                 "content.js"
+            ],
+            "css": [
+                "content.css"
             ]
         }
     ]

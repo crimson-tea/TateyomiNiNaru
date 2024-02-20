@@ -1,19 +1,35 @@
-const color = document.getElementById("novel_color");
-color.style.writingMode = "vertical-rl";
-color.style.textOrientation = "upright";
-color.style.overflowX = "scroll";
-color.style.width = "100%";
-color.style.height = "80%";
+function changeScrollDirection() {
+    const scrollTarget = document.querySelector("#novel_color");
+    if (!scrollTarget) return;
 
-const honbun = document.getElementById("novel_honbun");
-honbun.style.width = "auto";
+    let interval = null;
+    let count = -1;
+    let targetLeft = 0;
 
-const novel_a = document.getElementById("novel_a");
-novel_a.style.borderTop = "none";
-novel_a.style.borderRight = "3px double #999999";
-novel_a.style.width = "auto";
+    scrollTarget.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        if (e.deltaY === 0) return;
+        if (interval) clearInterval(interval);
+        if (count === -1) targetLeft = scrollTarget.scrollLeft;
+        count = 0;
 
-const novel_p = document.getElementById("novel_p");
-novel_p.style.borderBottom = "none";
-novel_p.style.borderLeft = "3px double #999999";
-novel_p.style.width = "auto";
+        const { scrollLeft, scrollWidth, clientWidth } = scrollTarget;
+        targetLeft = Math.max(clientWidth - scrollWidth, Math.min(targetLeft - e.deltaY, 1));
+
+        const sign = Math.sign(targetLeft - scrollLeft);
+        const diff = Math.abs(targetLeft - scrollLeft);
+        if (sign === 0) return;
+        const scrollDelta = sign * Math.ceil(diff / 30);
+
+        interval = setInterval(() => {
+            scrollTarget.scrollLeft += scrollDelta;
+            count++;
+            if (count >= 30) {
+                clearInterval(interval);
+                count = -1;
+            }
+        }, 7);
+    }, { passive: false });
+}
+
+changeScrollDirection();
