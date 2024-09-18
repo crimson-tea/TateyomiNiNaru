@@ -1,5 +1,5 @@
 function handleScroll() {
-    const scrollTarget = document.querySelector("#novel_color");
+    const scrollTarget = document.querySelector("article.p-novel");
     if (!scrollTarget) return;
 
     let interval = null;

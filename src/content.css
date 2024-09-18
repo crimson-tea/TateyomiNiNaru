@@ -4,34 +4,41 @@ body {
     -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar {
-    display: none;
+main.l-main {
+    width: calc(100vw - 17px);
+    margin: 0;
 }
 
-div#novel_color {
+.p-novel {
     writing-mode: vertical-rl;
     text-orientation: upright;
     overflow-x: scroll;
     width: 100%;
-    height: calc(100vh - 169px);
+    height: calc(100vh - 160px);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-div#novel_honbun {
-    width: auto;
+a.c-pager__item:not(:last-child) {
+    padding: 0;
 }
 
-div#novel_p {
-    border-bottom: none;
+a.c-pager__item:not(:first-child) {
+    padding: 0;
+}
+
+div.p-novel__text--preface {
+    border-bottom: unset;
     border-left: 3px double #999999;
     width: auto;
 }
 
-div#novel_a {
-    border-top: none;
+div.p-novel__text--afterword {
+    border-top: unset;
     border-right: 3px double #999999;
     width: auto;
 }
 
-div#novel_no {
-    margin-bottom: 80px;
+div.p-novel__number.js-siori {
+    margin-bottom: 45px;
 }
